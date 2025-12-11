@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Processing Toolkit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>String Processing Toolkit</h1>
+            <p class="subtitle">Machine Problems 1-5: String Manipulation & Validation</p>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="replaceall">ReplaceAll</button>
+            <button class="tab-btn" data-tab="searchword">SearchWord</button>
+            <button class="tab-btn" data-tab="replaceword">ReplaceWord</button>
+            <button class="tab-btn" data-tab="countchars">CountCharacters</button>
+            <button class="tab-btn" data-tab="emailcheck">EmailCheck</button>
+        </nav>
+
+        
+        <section id="replaceall" class="tab-content active">
+            <div class="card">
+                <h2>Machine Problem 1: ReplaceAll</h2>
+                <p class="description">Remove all spaces from text</p>
+                
+                <div class="form-group">
+                    <label for="replaceall-text">Original Text:</label>
+                    <textarea id="replaceall-text" placeholder="Enter your text here..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="performReplaceAll()">Remove Spaces</button>
+
+                <div class="result-section" id="replaceall-result" style="display: none;">
+                    <h3>Result:</h3>
+                    <textarea id="replaceall-output" readonly></textarea>
+                    <p class="info-text" id="replaceall-info"></p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="searchword" class="tab-content">
+            <div class="card">
+                <h2>Machine Problem 2: SearchWord</h2>
+                <p class="description">Search for a word in text (case-insensitive)</p>
+                
+                <div class="form-group">
+                    <label for="searchword-text">Text to Search:</label>
+                    <textarea id="searchword-text" placeholder="Enter your text here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="searchword-search">Word to Find:</label>
+                    <input type="text" id="searchword-search" placeholder="Enter word to search...">
+                </div>
+
+                <button class="btn btn-primary" onclick="performSearchWord()">Search</button>
+
+                <div class="result-section" id="searchword-result" style="display: none;">
+                    <h3>Result:</h3>
+                    <div class="result-box" id="searchword-output"></div>
+                    <textarea id="searchword-highlighted" readonly style="margin-top: 10px;"></textarea>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="replaceword" class="tab-content">
+            <div class="card">
+                <h2>Machine Problem 3: ReplaceWord</h2>
+                <p class="description">Replace a specific word (whole word only)</p>
+                
+                <div class="form-group">
+                    <label for="replaceword-text">Original Text:</label>
+                    <textarea id="replaceword-text" placeholder="Enter your text here..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="replaceword-find">Word to Replace:</label>
+                        <input type="text" id="replaceword-find" placeholder="Enter word...">
+                    </div>
+                    <div class="form-group">
+                        <label for="replaceword-replace">Replace With:</label>
+                        <input type="text" id="replaceword-replace" placeholder="Replacement word...">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="performReplaceWord()">Replace Word</button>
+
+                <div class="result-section" id="replaceword-result" style="display: none;">
+                    <h3>Result:</h3>
+                    <textarea id="replaceword-output" readonly></textarea>
+                    <p class="info-text" id="replaceword-info"></p>
+                </div>
+            </div>
+        </section>
+
+    
+        <section id="countchars" class="tab-content">
+            <div class="card">
+                <h2>Machine Problem 4: CountCharacters</h2>
+                <p class="description">Count different types of characters in text</p>
+                
+                <div class="form-group">
+                    <label for="countchars-text">Text to Analyze:</label>
+                    <textarea id="countchars-text" placeholder="Enter your text here..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="performCountCharacters()">Analyze</button>
+
+                <div class="result-section" id="countchars-result" style="display: none;">
+                    <h3>Character Analysis:</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">Total Characters</span>
+                            <span class="stat-value" id="stat-total">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Letters</span>
+                            <span class="stat-value" id="stat-letters">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Digits</span>
+                            <span class="stat-value" id="stat-digits">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Spaces</span>
+                            <span class="stat-value" id="stat-spaces">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Special Characters</span>
+                            <span class="stat-value" id="stat-special">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Uppercase</span>
+                            <span class="stat-value" id="stat-upper">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Lowercase</span>
+                            <span class="stat-value" id="stat-lower">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Words</span>
+                            <span class="stat-value" id="stat-words">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="emailcheck" class="tab-content">
+            <div class="card">
+                <h2>Machine Problem 5: EmailCheck</h2>
+                <p class="description">Validate email addresses</p>
+                
+                <div class="form-group">
+                    <label for="emailcheck-input">Email Address:</label>
+                    <input type="text" id="emailcheck-input" placeholder="Enter email address...">
+                </div>
+
+                <button class="btn btn-primary" onclick="performEmailCheck()">Validate</button>
+
+                <div class="result-section" id="emailcheck-result" style="display: none;">
+                    <h3>Validation Result:</h3>
+                    <div class="email-result" id="emailcheck-output"></div>
+                    <div class="validation-details" id="emailcheck-details"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Week 3 Web Programming Activity</p>
+        </footer>
+    </div>
+
+    <script src="function.js"></script>
+</body>
+</html>
